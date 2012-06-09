@@ -1,0 +1,66 @@
+
+
+events attending
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>EXTENDED_description</th>
+    
+    
+  </tr>
+
+<% @events.each do |event| %>
+	
+  <tr>
+    <td><%= event.title %></td>
+    <td><%= event.description %></td>
+
+    <td><%= event.extended_description %></td>
+    	
+    
+    </tr>
+ 
+  <% end %>
+   </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <%= link_to 'view events', home_selection_path %>
+   <%= link_to 'create events', new_event_path %><br>
+events created
+
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>bebebebe</th>
+    
+    
+  </tr>
+
+<% @cevent.each do |event| %>
+  
+  <tr>
+    <td><%= event.title %></td>
+    <td><%= event.description %></td>
+      <td><%a= event.extended_description %><%=a.html_safe %></td>
+    
+    </tr>
+ 
+  <% end %>
+   </table>
+   </div>

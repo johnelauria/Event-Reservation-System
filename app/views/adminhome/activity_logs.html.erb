@@ -1,0 +1,17 @@
+<h1>Activiy Logs</h1>
+<br><br>
+
+<h1>All Activity Logs<%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"alllogs")%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %><%end%></h1>	
+<hr style="border: 1px solid #1c7384;" >
+
+<%@logs.each do |log|%>
+<%=log.username%>
+	<%=log.activity%>
+	<%=log.details%>
+	<%=log.details2%>
+	<%=log.time%><br>
+<%end%>
+<hr style="border: 1px solid black;" >

@@ -1,0 +1,367 @@
+<style>
+body {
+	background:white;
+}
+</style>
+<%if params[:type]=="event"%>
+<div style="width:50%">
+	<h1>Event</h1>	
+<hr style="border: 1px solid #1c7384;" >
+
+
+<strong>TITLE:</strong> 
+<%=@event.title%><br><br><br>
+<strong>DESCRIPTION:</strong> 
+<br>
+<%a=@event.extended_description%><%=a.html_safe%><br>
+<strong>Capacity:</strong> 
+<%=@event.capacity%><br>
+<strong>Price:</strong> 
+<%=@event.price%><br>
+<strong>Location:</strong> 
+<%=@event.location_building%>,<%=@event.location_street%>,<%=@event.location_city%><br>
+<strong>Start:</strong> 
+<%=@event.start_date_mm%>/<%=@event.start_date_dd_%>/<%=@event.start_date_yyyy%> &nbsp&nbsp<%=@event.start_hour%>:<%=@event.start_min%>&nbsp<%=@event.start_ti%><br>
+
+
+
+<strong>End:</strong> 
+<%=@event.end_date_mm%>/<%=@event.end_date_dd%>/<%=@event.end_date_yyyy%> &nbsp&nbsp<%=@event.end_hour%>:<%=@event.end_min%>&nbsp<%=@event.end_ti%><br>
+
+<strong>Organizer:</strong> 
+<%=@event.host_name%>&nbsp&nbsp<br>
+
+<strong>Contact Organizer:</strong> 
+<%=@event.cellnum%>&nbsp&nbsp<%=@user.email%><br>
+
+<strong>People Attending:</strong> 
+<%=@event.attending%><br>
+
+<strong>People Reserved:</strong> 
+<%=@event.reserved%>
+<hr style="border: 1px solid black;" >
+
+<h1>Author</h1>
+<hr style="border: 1px solid #1c7384;" >
+<div style="float:left"><strong>NAME : </strong><%=@user.fullname%></div> 
+
+<span style="float:right;margin-right:100px"><strong>USERNAME : </strong><%=@user.username%></span><br>
+
+<hr style="border: 1px solid black;" >
+</div>
+
+<% end %>
+
+
+
+
+
+<%if params[:type]=="usercreatedevents"%>
+<div style="width:50%">
+
+<h1>User: <%=@user.username%> : Profile </h1>	
+<hr style="border: 1px solid #1c7384;" >
+
+<div style="float:left"><strong>NAME : </strong><%=@user.fullname%></div> 
+
+<span style="float:right;"><strong>ALMONDS : </strong><%=@user.almonds%></span>
+
+<span style="float:right;margin-right:100px"><strong>USERNAME : </strong><%=@user.username%></span><br><br>
+
+<span style="float:left"><strong>EMAIL : </strong><%=@user.email%></span> 
+<span style="float:right; margin-right:100px"><strong>MOBILENUMBER : </strong><%=@user.cellnum%></span><br><br>
+
+<strong>ADDRESS : </strong><%=@user.address%>&nbsp&nbsp&nbsp<br><br>
+<hr style="border: 1px solid black;" >
+
+<br>
+<h1><%=@type+" : Events created"%></h1>
+<hr style="border: 1px solid #1c7384;" >
+<% if @userevents.count != 0%> 
+
+<table id="bordered">
+  <tr>
+    <th></th>
+    
+    
+  </tr>
+
+<%@userevents.each do |f|%>
+  
+  <tr>
+     <td> <%=link_to(adminhome_events_path(:dugas2=> "event",:eventid=>f.id)) do%><span style="font-size:15px;"><%= f.title %></span><br><span style="font-size:10px"><%= f.description %><br><br></span> <%end%></td>
+      
+    </tr>
+ 
+  <% end %>
+   </table>
+   <%end %>
+   <hr style="border: 1px solid black;" >
+</div>
+<% end %>
+
+
+
+<%if params[:type]=="userlog"%>
+<div style="width:50%">
+
+<h1>User: <%=@user.username%> : Profile </h1>	
+<hr style="border: 1px solid #1c7384;" >
+
+<div style="float:left"><strong>NAME : </strong><%=@user.fullname%></div> 
+
+<span style="float:right;"><strong>ALMONDS : </strong><%=@user.almonds%></span>
+
+<span style="float:right;margin-right:100px"><strong>USERNAME : </strong><%=@user.username%></span><br><br>
+
+<span style="float:left"><strong>EMAIL : </strong><%=@user.email%></span> 
+<span style="float:right; margin-right:100px"><strong>MOBILENUMBER : </strong><%=@user.cellnum%></span><br><br>
+
+<strong>ADDRESS : </strong><%=@user.address%>&nbsp&nbsp&nbsp<br><br>
+<hr style="border: 1px solid black;" >
+
+<br>
+
+
+<h1><%=@type+" : Activity log "%></h1>
+<hr style="border: 1px solid #1c7384;" >
+<%@logs.each do |log|%>
+<%=log.username%>
+  <%=log.activity%>
+  <%=log.details%>
+  <%=log.details2%>
+  <%=log.time%><br>
+<%end%>
+<hr style="border: 1px solid black;" >
+</div>
+<% end %>
+
+
+<%if params[:type]=="userprofile"%>
+<div style="width:50%">
+
+<h1>User: <%=@user.username%> : Profile </h1>	
+<hr style="border: 1px solid #1c7384;" >
+
+<div style="float:left"><strong>NAME : </strong><%=@user.fullname%></div> 
+
+<span style="float:right;"><strong>ALMONDS : </strong><%=@user.almonds%></span>
+
+<span style="float:right;margin-right:100px"><strong>USERNAME : </strong><%=@user.username%></span><br><br>
+
+<span style="float:left"><strong>EMAIL : </strong><%=@user.email%></span> 
+<span style="float:right; margin-right:100px"><strong>MOBILENUMBER : </strong><%=@user.cellnum%></span><br><br>
+
+<strong>ADDRESS : </strong><%=@user.address%>&nbsp&nbsp&nbsp<br><br>
+<hr style="border: 1px solid black;" >
+
+<br>
+
+</div>
+<% end %>
+
+
+
+
+
+
+
+
+
+<%if params[:type]=="allevents"%>
+
+<div style="width:50%">
+
+<h1>All Events</h1>	
+<hr style="border: 1px solid #1c7384;" >
+<table>
+<tr>
+
+<th></th>
+
+</tr>
+
+<%@events.each do |f|%>
+  
+  <tr>
+     <td> <%=link_to(adminhome_events_path(:eventid=> f.id, :dugas2=>"event")) do%><span style="font-size:15px;"><%= f.title %></span><br><span style="font-size:10px"><%= f.description %><br><br></span> <%end%></td>
+      
+    </tr>
+ 
+  <% end %>
+</table>
+<hr style="border: 1px solid black;" >
+</div>
+<% end %>
+
+<%if params[:type]=="alllogs"%>
+
+<div style="width:50%">
+
+<h1>All Activity Logs</h1>	
+<hr style="border: 1px solid #1c7384;" >
+
+<%@logs.each do |log|%>
+<%=log.username%>
+	<%=log.activity%>
+	<%=log.details%>
+	<%=log.details2%>
+	<%=log.time%><br>
+<%end%>
+<hr style="border: 1px solid black;" >
+
+</div>
+
+<%end%>
+
+
+<%if params[:type]=="userattending"%>
+
+<div style="width:50%">
+
+<h1>User: <%=@user.username%> : Profile </h1> 
+<hr style="border: 1px solid #1c7384;" >
+
+<div style="float:left"><strong>NAME : </strong><%=@user.fullname%></div> 
+
+<span style="float:right;"><strong>ALMONDS : </strong><%=@user.almonds%></span>
+
+<span style="float:right;margin-right:100px"><strong>USERNAME : </strong><%=@user.username%></span><br><br>
+
+<span style="float:left"><strong>EMAIL : </strong><%=@user.email%></span> 
+<span style="float:right; margin-right:100px"><strong>MOBILENUMBER : </strong><%=@user.cellnum%></span><br><br>
+
+<strong>ADDRESS : </strong><%=@user.address%>&nbsp&nbsp&nbsp<br><br>
+<hr style="border: 1px solid black;" >
+
+<br>
+
+</div>
+<div style="width:50%">
+
+<h1><%=@type+" : Events Attending"%></h1>
+<hr style="border: 1px solid #1c7384;" >
+
+
+<table id="bordered">
+  <tr>
+    <th></th>
+    
+    
+  </tr>
+
+<%@userattending.each do |f|%>
+  <%event= Event.find(f.event_id)%>
+  <tr>
+     <td> <%=link_to(adminhome_events_path(:dugas2=> "event",:eventid=>event.id)) do%><span style="font-size:15px;"><%= event.title %></span><br><span style="font-size:10px"><%= event.description %><br><br></span> <%end%></td>
+      
+    </tr>
+ 
+  <% end %>
+   </table>
+<hr style="border: 1px solid black;" >
+
+</div>
+
+<% end %>
+
+<%if params[:type]=="allusers"%>
+
+<div style="width:50%">
+
+<h1>All Users</h1> 
+<hr style="border: 1px solid #1c7384;" >
+
+
+<table id="bor" style="width:auto;">
+  <tr>
+    <th>Username</th>
+    <th>Fullname</th>
+    <th>Email</th>
+    
+    
+  </tr>
+
+<%@users.each do |f|%>
+  
+  <tr>
+    <td><%=link_to(adminhome_users_path(:dugas=> "yes",:user=> f.username)) do%>
+    <h5 style="text-align:center;"><%= f.username %></h5><%end%></td>
+
+    <td><%=link_to(adminhome_users_path(:dugas=> "yes",:user=> f.username)) do%>
+    <h5 style="text-align:center;"><%=f.fullname%></h5><%end%></td>
+
+    <td><%=link_to(adminhome_users_path(:dugas=> "yes",:user=> f.username)) do%>
+    <h5 style="text-align:center;"><%= f.email %></h5><%end%></td>
+
+    </tr>
+
+ 
+  <% end %>
+   </table>
+
+<hr style="border: 1px solid black;" >
+
+</div>
+
+<% end %>
+
+
+
+
+
+<%if params[:type]=="cc5"%>
+
+<div style="width:50%">
+
+<h1>Top Chocolate Chip Buyers</h1> 
+<hr style="border: 1px solid #1c7384;" >
+
+<table>
+<tr>
+<th></th>
+</tr>
+<%@users.each do |f|%>
+<tr>
+<td>
+
+<%=f.almonds%><br>
+<%=f.username%><br>
+<%=f.fullname%>
+</td>
+</tr>
+
+<% end %>
+</table>
+<hr style="border: 1px solid black;" >
+
+</div>
+
+<% end %>
+
+<%if params[:type]=="allcc"%>
+
+<div style="width:50%">
+
+<h1>All Users</h1> 
+<hr style="border: 1px solid #1c7384;" >
+<table>
+<tr>
+<th></th>
+</tr>
+<%@users.each do |log|%>
+<tr>
+<td><%=link_to(adminhome_users_path(:dugas=> "yes",:user=>log.username)) do%>
+<%=log.almonds%><br>
+  <%=log.username%><br>
+  
+  <%=log.fullname%>
+  <%end%>
+  </td>
+  </tr>
+<%end%>
+</table>
+<hr style="border: 1px solid black;" >
+</div>
+
+<% end %>

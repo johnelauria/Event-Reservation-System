@@ -1,0 +1,42 @@
+// Place all the styles related to the admins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#bor{
+	width:auto
+}
+
+
+#bor >td{
+  width:525px;
+  
+}
+#bor >tr > a {
+  text-decoration:none;
+  color:#3c383c;
+
+}
+#bor >tr > a:hover {
+  text-decoration:none;
+  color:white;
+}
+
+#bor> tr:hover > a {
+  text-decoration:none;
+  color:white;
+}
+
+#bor a:after{
+  text-decoration:none;
+  color:white;
+}
+#bor tr:after{
+  text-decoration:none;
+  color:white;
+}
+
+#bor tr:hover {
+  text-decoration:none;
+  background:#786f74;
+  color:white;
+}

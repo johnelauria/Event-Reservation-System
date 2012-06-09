@@ -1,0 +1,29 @@
+<style>
+body{
+	background:white;
+}
+</style>
+<div style="border: 1px solid black; width:50%">
+<h1>Cookie Events</h1>
+<hr style="border:1px solid black">
+
+<%@a=Userevent.find(@event.id)%>
+<span style="float:left;margin-left:20px"><%=@event.title%></span><span style="float:right;margin-right:20px">Ticket No : <%=@a.id%></span><br>
+<span style="float:left;margin-left:20px"><%=@event.description%></span>
+<span style="float:right;margin-right:20px">Price : <%=@event.price%></span><br>
+<span style="float:left;margin-left:20px"><%=@event.location_building%>,<%=@event.location_street%>,<%=@event.location_city%></span><br>
+
+<span style="float:left;margin-left:20px">Starting Time:
+<%=@event.start_date_mm%>/<%=@event.start_date_dd_%>/<%=@event.start_date_yyyy%> &nbsp&nbsp<%=@event.start_hour%>:<%=@event.start_min%>&nbsp<%=@event.start_ti%></span>
+
+<span style="float:right;margin-right:20px">Organizer: 
+<%=@event.host_name%>&nbsp&nbsp</span><br>
+
+<span style="float:left;margin-left:20px">Ending Time: 
+<%=@event.end_date_mm%>/<%=@event.end_date_dd%>/<%=@event.end_date_yyyy%> &nbsp&nbsp<%=@event.end_hour%>:<%=@event.end_min%>&nbsp<%=@event.end_ti%></span>
+
+<span style="float:right;margin-right:20px">Contact Organizer:
+<%=@event.cellnum%></span><br>
+
+
+</div>

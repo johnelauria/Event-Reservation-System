@@ -1,0 +1,2 @@
+module GhomeHelper
+end

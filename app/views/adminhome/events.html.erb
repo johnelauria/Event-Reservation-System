@@ -1,0 +1,159 @@
+<h1>Events</h1>
+
+<%= form_tag("events", :method =>"post",:style=>"float:left") do %>
+<%= hidden_field_tag(:dugas,"yeah")%>
+<%= submit_tag("All Events", :id=>"search-submit") %>
+<%end%>
+<%= form_tag("events", :method =>"post",:style=>"float:right") do %>
+<%= hidden_field_tag(:dugas,"yes")%>
+<%= text_field_tag(:event)%>
+<%= submit_tag("Search Event",:id=>"search-submit") %>
+<%end%>
+<br><br>
+<% if params[:dugas]== "yeah" %>
+
+<h1>All Events<%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"allevents")%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %>
+<%end%> </h1>	
+<hr style="border: 1px solid #1c7384;" >
+<table>
+<tr>
+
+<th></th>
+
+</tr>
+
+<%@events.each do |f|%>
+  
+  <tr>
+     <td> <%=link_to(adminhome_events_path(:eventid=> f.id, :dugas2=>"event")) do%><span style="font-size:15px;"><%= f.title %></span><br><span style="font-size:10px"><%= f.description %><br><br></span> <%end%></td>
+      
+    </tr>
+ 
+  <% end %>
+</table>
+<hr style="border: 1px solid black;" >
+<% end %>
+<% if params[:dugas2]=="event"%>
+
+<h1>Author</h1>
+<hr style="border: 1px solid #1c7384;" >
+<div style="float:left"><strong>NAME : </strong><%=@user.fullname%></div> 
+
+
+<%= form_tag("users", :method =>"post",:style=>"float:right") do %>
+<%= hidden_field_tag(:dugas,"yes")%>
+<%= hidden_field_tag(:user, @user.username)%>
+<%= submit_tag("View User",:id=>"search-submit") %>
+<%end%>
+
+<span style="float:right;margin-right:100px"><strong>USERNAME : </strong><%=@user.username%></span>
+
+<br>
+
+<hr style="border: 1px solid black;" >
+   
+
+<h1>Event<%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"event")%>
+<%= hidden_field_tag(:event,@event.id)%>
+<%= hidden_field_tag(:user,@user.id)%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %>
+<%end%> </h1>	
+<hr style="border: 1px solid #1c7384;" >
+
+
+<strong>TITLE:</strong> 
+<%=@event.title%><br><br><br>
+<strong>DESCRIPTION:</strong> 
+<br>
+<%a=@event.extended_description%><%=a.html_safe%><br>
+<strong>Capacity:</strong> 
+<%=@event.capacity%><br>
+<strong>Price:</strong> 
+<%=@event.price%><br>
+<strong>Location:</strong> 
+<%=@event.location_building%>,<%=@event.location_street%>,<%=@event.location_city%><br>
+<strong>Start:</strong> 
+<%=@event.start_date_mm%>/<%=@event.start_date_dd_%>/<%=@event.start_date_yyyy%> &nbsp&nbsp<%=@event.start_hour%>:<%=@event.start_min%>&nbsp<%=@event.start_ti%><br>
+
+
+
+<strong>End:</strong> 
+<%=@event.end_date_mm%>/<%=@event.end_date_dd%>/<%=@event.end_date_yyyy%> &nbsp&nbsp<%=@event.end_hour%>:<%=@event.end_min%>&nbsp<%=@event.end_ti%><br>
+
+<strong>Organizer:</strong> 
+<%=@event.host_name%>&nbsp&nbsp<br>
+
+<strong>Contact Organizer:</strong> 
+<%=@event.cellnum%>&nbsp&nbsp<%=@user.email%><br>
+
+<strong>People Attending:</strong> 
+<%=@event.attending%><br>
+
+<strong>People Reserved:</strong> 
+<%=@event.reserved%>
+<%= link_to '  Delete  ', @event, confirm: 'Are you sure?', method: :delete, :id=>"search-submit", :style=>"float:right; text-decoration:none; width:50px; text-align:right;" %>
+<hr style="border: 1px solid black; text-align:center;" >
+<% end %>
+<% if params[:dugas]=="yes" %>
+
+
+<h1>Author</h1> 
+<hr style="border: 1px solid #1c7384;" >
+<div style="float:left"><strong>NAME : </strong><%=@user.fullname%></div> 
+
+
+<%= form_tag("users", :method =>"post",:style=>"float:right") do %>
+<%= hidden_field_tag(:dugas,"yes")%>
+<%= hidden_field_tag(:user,@user.username)%>
+<%= submit_tag("View User",:id=>"search-submit") %>
+<%end%>
+
+<span style="float:right;margin-right:100px"><strong>USERNAME : </strong></span>
+
+<br>
+
+<hr style="border: 1px solid black;" >
+   
+<h1>Event</h1>
+<hr style="border: 1px solid #1c7384;" >
+
+
+<strong>TITLE:</strong> 
+<%=@event.title%><br><br><br>
+<strong>DESCRIPTION:</strong> 
+<br>
+<%a=@event.extended_description%><%=a.html_safe%><br>
+<strong>Capacity:</strong> 
+<%=@event.capacity%><br>
+<strong>Price:</strong> 
+<%=@event.price%><br>
+<strong>Location:</strong> 
+<%=@event.location_building%>,<%=@event.location_street%>,<%=@event.location_city%><br>
+<strong>Start:</strong> 
+<%=@event.start_date_mm%>/<%=@event.start_date_dd_%>/<%=@event.start_date_yyyy%> &nbsp&nbsp<%=@event.start_hour%>:<%=@event.start_min%>&nbsp<%=@event.start_ti%><br>
+
+
+
+<strong>End:</strong> 
+<%=@event.end_date_mm%>/<%=@event.end_date_dd%>/<%=@event.end_date_yyyy%> &nbsp&nbsp<%=@event.end_hour%>:<%=@event.end_min%>&nbsp<%=@event.end_ti%><br>
+
+<strong>Organizer:</strong> 
+<%=@event.host_name%>&nbsp&nbsp<br>
+
+<strong>Contact Organizer:</strong> 
+<%=@event.cellnum%>&nbsp&nbsp<%=@user.email%><br>
+
+<strong>People Attending:</strong> 
+<%=@event.attending%><br>
+
+<strong>People Reserved:</strong> 
+<%=@event.reserved%>
+<%= link_to 'Destroy', @event, confirm: 'Are you sure?', method: :delete %>
+<hr style="border: 1px solid black;" >
+
+<% end%>

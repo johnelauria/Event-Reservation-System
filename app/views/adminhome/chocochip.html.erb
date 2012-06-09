@@ -1,0 +1,79 @@
+<h1>Chocolate Chips</h1>
+
+<%= form_tag("chocochip", :method =>"post",:style=>"float:left") do %>
+<%= hidden_field_tag(:dugas,"all")%>
+<%= submit_tag("All Users", :id=>"search-submit") %>
+<%end%>
+<%= form_tag("chocochip", :method =>"post",:style=>"float:left") do %>
+<%= hidden_field_tag(:dugas,"logs")%>
+<%= submit_tag("Logs",:id=>"search-submit") %>
+<%end%>
+
+<% if params[:dugas]=="none" %>
+<br>
+<h1>Top 5 Chocolate Chip Buyers<%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"cc5")%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %><%end%></h1> 
+<hr style="border: 1px solid #1c7384;" >
+<table>
+<tr>
+<th></th>
+</tr>
+<%@users.each do |f|%>
+<tr>
+<td>
+
+<%=f.almonds%><br>
+<%=f.username%><br>
+<%=f.fullname%>
+</td>
+</tr>
+
+<% end %>
+</table>
+
+<hr style="border: 1px solid black;" >
+
+<% end %>
+
+<% if params[:dugas]=="logs"%>
+
+
+<%@logs.each do |log|%>
+<%=log.username%>
+	<%=log.activity%>
+	<%=log.details%>
+	<%=log.details2%>
+	<%=log.time%><br>
+<%end%>
+<% end %>
+
+
+
+<% if params[:dugas]=="all"%>
+<br><br>
+
+<h1>All Users<%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"allcc")%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %><%end%></h1> 
+<hr style="border: 1px solid #1c7384;" >
+<table>
+<tr>
+<th></th>
+</tr>
+<%@users.each do |log|%>
+<tr>
+<td><%=link_to(adminhome_users_path(:dugas=> "yes",:user=>log.username)) do%>
+<%=log.almonds%><br>
+	<%=log.username%><br>
+	
+	<%=log.fullname%>
+	<%end%>
+	</td>
+	</tr>
+<%end%>
+</table>
+<hr style="border: 1px solid black;" >
+<% end %>

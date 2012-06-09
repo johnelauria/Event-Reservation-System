@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loginapp</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if params[:down]=="yeah"%>
+    <% else%>
+<div id="wrapper">&nbsp<div id="nav" style="float:right">
+        <% if current_user %>
+       <%= link_to "Edit Profile", edit_user_path(current_user.id)%> 
+        <span style=" ">|</span>
+        <%= link_to "Logout", :logout%>
+        <% else %>
+        <% if current_admin %>
+<%= link_to "Edit Profile", edit_admin_path(current_admin.id)%> <span style=" ">|</span>
+        <%= link_to "Logout", :alogout%>
+        <% else %>
+        <%= link_to "Register", new_user_path%> | 
+        <%= link_to "Login", :login %>
+        <% end %>
+        <% end %>
+    </div>
+    
+<div id="page">
+
+    <div id="page-bgtop">
+
+      <div id="page-bgbtm">
+
+        <div id="content">
+
+          <div class="post">
+
+
+<%end%>
+    
+<%= yield %>
+<% if params[:down]=="yeah"%>
+    <% else%>
+</div>
+
+</div>
+<div id="sidebar">
+
+          <div id="logo"><br><br>
+          <h1>Cookie Events</h1><br><br>
+          <p>your one bite away from... </p><br><br>
+          <div id="menu">
+<ul><% if current_admin %>
+
+<li><%=link_to "HOME", adminhome_home_path%></li>
+
+<li><%=link_to "USERS", adminhome_users_path(:dugas=>"yeah")%></li>
+<li><%=link_to "EVENTS", adminhome_events_path(:dugas=>"yeah")%></li>
+<li><%=link_to "ACTIVITY LOGS", adminhome_activity_logs_path%></li>
+<li><%=link_to "CHOCOLATE CHIPS", adminhome_chocochip_path(:dugas=>"none")%></li>
+<% else %>
+<li><%=link_to "HOME", home_home_path%></li>
+<li><%=link_to "CREATE EVENTS", new_event_path%></li>
+<li><%=link_to "MANAGE EVENTS", home_manage_path%></li>
+<li><%=link_to "VIEW EVENTS", home_selection_path%></li>
+<li><%=link_to "BUY CHOCOLATE CHIPS", home_almonds_path%></li>
+<% end %>
+</ul>
+</div>
+          </div>
+          </div>
+</div>
+
+</div>
+
+</div>
+<%end%>
+</body>
+
+</html>

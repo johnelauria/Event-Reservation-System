@@ -1,0 +1,156 @@
+<h1><%=@type%></h1>
+<%= form_tag("users", :method =>"post",:style=>"float:left") do %>
+<%= hidden_field_tag(:dugas,"yeah")%>
+<%= submit_tag("All Users", :id=>"search-submit") %>
+<%end%>
+<%= form_tag("users", :method =>"post",:style=>"float:right") do %>
+<%= hidden_field_tag(:dugas,"yes")%>
+<%= text_field_tag(:user)%>
+<%= submit_tag("search user",:id=>"search-submit") %>
+<%end%>
+<% if params[:dugas]=="yes"%>
+
+<br><br>
+<h1>User: <%=@user.username%> : Profile <%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"userprofile")%>
+<%= hidden_field_tag(:user,@user.username)%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %>
+<%end%></h1> 
+<hr style="border: 1px solid #1c7384;" >
+<div style="float:left"><strong>NAME : </strong><%=@user.fullname%></div> 
+
+<span style="float:right;"><strong>ALMONDS : </strong><%=@user.almonds%></span>
+
+<span style="float:right;margin-right:100px"><strong>USERNAME : </strong><%=@user.username%></span><br><br>
+
+<span style="float:left"><strong>EMAIL : </strong><%=@user.email%></span> 
+<span style="float:right; margin-right:100px"><strong>MOBILENUMBER : </strong><%=@user.cellnum%></span><br><br>
+
+<strong>ADDRESS : </strong><%=@user.address%>&nbsp&nbsp&nbsp<br><br>
+<hr style="border: 1px solid black;" >
+
+<br>
+<h1><%=@type+" : Events created"%><%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"usercreatedevents")%>
+<%= hidden_field_tag(:user,@user.username)%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %>
+<%end%></h1>
+<hr style="border: 1px solid #1c7384;" >
+<% if @userevents.count != 0%> 
+
+<table id="bordered">
+  <tr>
+    <th></th>
+    
+    
+  </tr>
+
+<%@userevents.each do |f|%>
+  
+  <tr>
+     <td> <%=link_to(adminhome_events_path(:dugas2=> "event",:eventid=>f.id)) do%><span style="font-size:15px;"><%= f.title %></span><br><span style="font-size:10px"><%= f.description %><br><br></span> <%end%></td>
+      
+    </tr>
+ 
+  <% end %>
+   </table>
+   <%end %>
+   <hr style="border: 1px solid black;" >
+   <br>
+
+
+   <h1><%=@type+" : Events Attending"%><%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"userattending")%>
+<%= hidden_field_tag(:user,@user.username)%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %>
+<%end%></h1>
+<hr style="border: 1px solid #1c7384;" >
+<% if @userattending.count != 0%> 
+
+<table id="bordered">
+  <tr>
+    <th></th>
+    
+    
+  </tr>
+
+<%@userattending.each do |f|%>
+  <%event= Event.find(f.event_id)%>
+  <tr>
+     <td> <%=link_to(adminhome_events_path(:dugas2=> "event",:eventid=>event.id)) do%><span style="font-size:15px;"><%= event.title %></span><br><span style="font-size:10px"><%= event.description %><br><br></span> <%end%></td>
+      
+    </tr>
+ 
+  <% end %>
+   </table>
+   <%end %>
+   <hr style="border: 1px solid black;" >
+   <br>
+<h1><%=@type+" : Activity log "%><%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"userlog")%>
+<%= hidden_field_tag(:user,@user.username)%>
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %>
+<%end%></h1>
+<hr style="border: 1px solid #1c7384;" >
+<%@logs.each do |log|%>
+<%=log.username%>
+  <%=log.activity%>
+  <%=log.details%>
+  <%=log.details2%>
+  <%=log.time%><br>
+<%end%>
+<hr style="border: 1px solid black;" >
+
+
+<%else%>
+
+
+<%if params[:dugas]=="yeah"%>
+
+<br><br>
+<h1>All Users <%= form_tag("print", :method =>"post",:style=>"float:right",:target => '_blank') do %>
+<%= hidden_field_tag(:down,"yeah")%>
+<%= hidden_field_tag(:type,"allusers")%>
+
+<%= submit_tag("Print", :id=>"search-submit",:style=>"color:white; background:black") %>
+<%end%></h1> 
+<hr style="border: 1px solid #1c7384;" >
+
+
+<table id="bor" style="width:auto;">
+  <tr>
+    <th>Username</th>
+    <th>Fullname</th>
+    <th>Email</th>
+    
+    
+  </tr>
+
+<%@users.each do |f|%>
+  
+  <tr>
+    <td><%=link_to(adminhome_users_path(:dugas=> "yes",:user=> f.username)) do%>
+    <h5 style="text-align:center;"><%= f.username %></h5><%end%></td>
+
+    <td><%=link_to(adminhome_users_path(:dugas=> "yes",:user=> f.username)) do%>
+    <h5 style="text-align:center;"><%=f.fullname%></h5><%end%></td>
+
+    <td><%=link_to(adminhome_users_path(:dugas=> "yes",:user=> f.username)) do%>
+    <h5 style="text-align:center;"><%= f.email %></h5><%end%></td>
+
+    </tr>
+
+ 
+  <% end %>
+   </table>
+
+<hr style="border: 1px solid black;" >
+<%end%>
+
+
+<%end%>
+

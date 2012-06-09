@@ -1,0 +1,70 @@
+
+
+
+<div style="width:499px; float:left">
+<h1>Featured Events</h1>
+<hr style="border: 1px solid #1c7384;" >
+
+<table id="bordered">
+  <tr>
+    <th></th>
+    <th></th>
+    
+  </tr>
+
+<%@recentevents.each do |f|%>
+  
+  <tr>
+  
+    <td> <%=link_to(home_view_path(:q=> f.id)) do%><span style="font-size:15px;"><%= f.title %></span><br><span style="font-size:10px"><%= f.description %><br><br></span> <%end%></td>
+   
+    </tr>
+ 
+  <% end %>
+   </table>
+
+<hr style="border: 1px solid black;" >
+</div>
+<br><br>
+<div style="width:499px; float:left">
+
+   <h1>Recent Events </h1>
+<hr style="border: 1px solid #1c7384;" >
+<table id="bordered">
+  <tr>
+    
+    <th></th>
+    
+    
+  </tr>
+
+<%@featuredevents.each do |f|%>
+  
+  <tr>
+    <td> <%=link_to(home_view_path(:q=> f.id)) do%><span style="font-size:15px;"><%= f.title %></span><br><span style="font-size:10px"><%= f.description %><br><br></span> <%end%></td>    
+    </tr>
+ 
+  <% end %>
+   </table>
+
+<hr style="border: 1px solid black;" >
+   </div>
+   <br>
+<h1>Events Notifications</h1> 
+<hr style="border: 1px solid #1c7384;" >
+<table id="bordered">
+  <tr>
+    <th></th>
+    </tr>
+
+<%@notes.each do |f|%>
+  
+  <tr>
+    <td><%=f.note%></td>   
+    </tr>
+ 
+  <% end %>
+   </table>
+<hr style="border: 1px solid black;" >
+
+

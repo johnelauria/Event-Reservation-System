@@ -1,0 +1,2 @@
+module OrganizerSessionsHelper
+end

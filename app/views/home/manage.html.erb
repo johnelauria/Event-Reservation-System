@@ -1,0 +1,60 @@
+<h1 style="font-size:40px">Event Management</h1>
+<br>
+<p id="notice"><%= notice %></p>
+<h1>Created Events</h1> 
+<hr style="border: 1px solid #1c7384;" >
+<table id="bordered">
+  <tr>
+    <th></th>
+    </tr>
+
+<%@events.each do |f|%>
+  
+  <tr>
+    <td> <%=link_to(home_view_path(:q=> f.id)) do%><span style="font-size:15px; color:black;"><%= f.title %></span><br><span style="font-size:10px"><%= f.description %><br><br></span> <%end%></td>   
+    </tr>
+ 
+  <% end %>
+   </table>
+
+<hr style="border: 1px solid black;" >
+
+<br>
+<h1>Events Attending</h1> 
+<hr style="border: 1px solid #1c7384;" >
+<table id="bordered">
+  <tr>
+    <th></th>
+    </tr>
+
+<%@attendevents.each do |f|%>
+  
+  <tr>
+  <%event=Event.find(f.event_id)%>
+    <td> <%=link_to(home_view_path(:q=> event.id)) do%><span style="font-size:15px; color:black;"><%= event.title %></span><br><span style="font-size:10px"><%= event.description %><br><br></span> <%end%></td>   
+    </tr>
+ 
+  <% end %>
+   </table>
+<hr style="border: 1px solid black;" >
+<br>
+
+
+<h1>Events Notifications</h1> 
+<hr style="border: 1px solid #1c7384;" >
+<table id="bordered">
+  <tr>
+    <th></th>
+    </tr>
+
+<%@notes.each do |f|%>
+  
+  <tr>
+    <td><%=f.note%></td>   
+    </tr>
+ 
+  <% end %>
+   </table>
+<hr style="border: 1px solid black;" >
+
+

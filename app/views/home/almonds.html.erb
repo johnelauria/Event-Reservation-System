@@ -1,0 +1,37 @@
+<h1 style="font-size:40px">Chocolate Chips</h1>
+<br>
+<h1>My Choco Chips</h1> 
+<hr style="border: 1px solid #1c7384;" >
+<h3><%=@user.almonds%></h3>
+
+<hr style="border: 1px solid black;" ><br>
+<br>
+
+
+
+<%= form_tag("buy", :method =>"post",:style=>"float:left; margin-left: 30px") do %>
+<%= hidden_field_tag(:dugas,"50")%>
+      <%= submit_tag("Buy 50",:style=>"width:100px;height:100px;",:id=>"search-submit") %><%end%>
+
+      <%= form_tag("buy", :method =>"post",:style=>"float:left; margin-left: 20px") do %>
+
+<%= hidden_field_tag(:dugas,"100")%>
+      <%= submit_tag("Buy 100",:style=>"width:100px;height:100px;",:id=>"search-submit") %><%end%>
+
+      <%= form_tag("buy", :method =>"post",:style=>"float:left;margin-left: 20px") do %>
+
+<%= hidden_field_tag(:dugas,"150")%>
+      <%= submit_tag("Buy 150",:style=>"width:100px;height:100px;",:id=>"search-submit") %><%end%>
+
+      <%= form_tag("buy", :method =>"post",:style=>"float:left;margin-left: 20px") do %>
+<%= hidden_field_tag(:dugas,"200")%>
+      <%= submit_tag("Buy 200",:style=>"width:100px;height:100px;",:id=>"search-submit") %><%end%>
+      <br><br><br><br><br><br><br>
+
+<h1>Rates</h1> 
+<hr style="border: 1px solid #1c7384;" >
+PHP 100 = 50 Choco Chips<br>
+PHP 195 = 100 Choco Chips<br>
+PHP 290 = 150 Choco Chips<br>
+PHP 380 = 200 Choco Chips<br>
+<hr style="border: 1px solid black;" >

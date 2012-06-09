@@ -1,0 +1,17 @@
+<h1 style="font-size:40px">Events</h1>
+<p id="notice"><%= notice %></p>
+<table>
+  <tr>
+    <th></th>
+    
+  </tr>
+
+<% @events.each do |event| %>
+	
+  <tr>
+    
+    <td> <%=link_to(home_view_path(:q=> event.id)) do%><span style="font-size:15px; color:black;"><%= event.title %></span><br><span style="font-size:10px"><%= event.description %><br><br></span> <%end%></td>
+    </tr>
+ 
+  <% end %>
+   </table>
